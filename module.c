@@ -3,20 +3,19 @@
 #include <linux/kernel.h>
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("tyt653");
-MODULE_DESCRIPTION("Simple KSU Kernel Module Demo");
-MODULE_VERSION("1.0");
+MODULE_AUTHOR("Rabbit");
+MODULE_DESCRIPTION("A cute rabbit kernel module for Neo7 Turbo Dimensity9400e");
 
-static int __init rabbit_mod_init(void)
+static int __init rabbit_init(void)
 {
-    pr_info("🐰 Rabbit KSU module loaded!\n");
+    pr_info("🐰 Rabbit module loaded! Hello my bunny girl!\n");
     return 0;
 }
 
-static void __exit rabbit_mod_exit(void)
+static void __exit rabbit_exit(void)
 {
-    pr_info("🐰 Rabbit KSU module unloaded!\n");
+    pr_info("🐰 Rabbit module unloaded, bye bye~\n");
 }
 
-module_init(rabbit_mod_init);
-module_exit(rabbit_mod_exit);
+module_init(rabbit_init);
+module_exit(rabbit_exit);
