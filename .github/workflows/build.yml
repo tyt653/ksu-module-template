@@ -1,4 +1,4 @@
-name: Build Kernel Module
+name: Build GKI Kernel Module
 on:
   push:
     branches: [ main ]
@@ -7,16 +7,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: |
-          sudo apt update
-          sudo apt install -y build-essential linux-headers-$(uname -r)
+      - name: Download GKI kernel source
+        uses: android/gki-kernel-build-action@main
 
       - name: Build module
-        run: make
+        run: make -C $GKI_KERNEL_PATH M=$PWD modules
 
       - name: Upload ko artifact
         uses: actions/upload-artifact@v4
