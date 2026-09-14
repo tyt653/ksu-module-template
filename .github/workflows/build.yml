@@ -2,6 +2,7 @@ name: Build GKI Kernel Module
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:  # 加上这一行，开启手动运行按钮
 
 jobs:
   build:
